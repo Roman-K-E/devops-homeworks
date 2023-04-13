@@ -14,6 +14,8 @@ Cкриншот страницы из личного кабинета YandexClou
 Чтобы получить зачёт, вам нужно предоставить вывод команды terraform apply и страницы свойств, созданной ВМ из личного кабинета YandexCloud.*
 
 #### Решение.
+2.1. Скриншот страницы свойств ВМ, созданной из YandexCloud.  
+![Image alt](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-2-1.png)
 
 
 
