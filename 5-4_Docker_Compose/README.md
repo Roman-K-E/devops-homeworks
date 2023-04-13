@@ -3,7 +3,8 @@
 Чтобы получить зачёт, вам нужно предоставить скриншот страницы с созданным образом из личного кабинета YandexCloud.*
 
 #### Решение.
-
+Cкриншот страницы из личного кабинета YandexCloud с созданным программой Packer образом.  
+![Image alt](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-1.png)
 
 
 ### Задача 2
