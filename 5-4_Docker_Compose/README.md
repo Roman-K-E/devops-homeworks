@@ -7,6 +7,7 @@ Cкриншот страницы из личного кабинета YandexClou
 ![Image alt](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-1.png)
 
 
+
 ### Задача 2
 *2.1. Создайте вашу первую виртуальную машину в YandexCloud с помощью web-интерфейса YandexCloud.  
 2.2.\* (Необязательное задание)
