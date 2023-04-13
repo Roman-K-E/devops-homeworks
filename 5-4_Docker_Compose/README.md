@@ -4,8 +4,8 @@
 
 #### Решение.
 Cкриншот страницы из личного кабинета YandexCloud с созданным программой Packer образом.  
-![Image alt](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-1.png)
 
+![Image alt](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-1.png)
 
 
 ### Задача 2
@@ -16,8 +16,10 @@ Cкриншот страницы из личного кабинета YandexClou
 
 #### Решение.
 2.1. Скриншот страницы свойств ВМ, созданной из YandexCloud.  
+
 ![5-4-2-1](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-2-1.png)
 
+2.2.\* (Необязательное задание временно пропущено ввиду нехватки времени к крайнему сроку.)  
 
 
 ### Задача 3
