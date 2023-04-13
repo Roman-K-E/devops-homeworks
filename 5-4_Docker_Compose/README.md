@@ -15,7 +15,7 @@ Cкриншот страницы из личного кабинета YandexClou
 
 #### Решение.
 2.1. Скриншот страницы свойств ВМ, созданной из YandexCloud.  
-![Image alt](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-2-1.png)
+![5-4-2-1](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-2-1.png)
 
 
 
