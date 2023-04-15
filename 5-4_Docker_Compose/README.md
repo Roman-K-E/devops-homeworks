@@ -29,7 +29,7 @@ ___
 
 #### Решение.
 
-![Image alt](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-3.png)
+![docker_ps_screenshot](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-3.png)
 
 ___
 ### Задача 4
@@ -40,6 +40,10 @@ ___
 Чтобы получить зачёт, предоставьте скриншот работающего веб-интерфейса Grafana с текущими метриками.*  
 
 #### Решение.
+
+![Panels_screenshot](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-4_Panels.png)
+![Monitor_Services_screenshot](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-4_Monitor_graph.png)
+![Docker_Host_screenshot](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-4_Docker_graph.png)
 
 
 
