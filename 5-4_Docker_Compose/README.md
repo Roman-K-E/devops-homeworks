@@ -29,6 +29,7 @@ ___
 
 #### Решение.
 
+![Image alt](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-4_Docker_Compose/5-4-3.png)
 
 ___
 ### Задача 4
