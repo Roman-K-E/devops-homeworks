@@ -15,3 +15,7 @@ docker node ls*
 
 ### Решение.
 Собран Docker-кластер из 3-х узлов, 1 manager и 2 worker.
+
+![5-5-2](https://github.com/Roman-K-E/devops-homeworks/blob/main/5-5_Docker_Swarm/5-5-2.png)
+
+(Имена 2-х ВМ указаны в малоинформативном виде, т.к. при их создании из CLI не указал параметр --hostname, только --name)
