@@ -8,7 +8,19 @@ ___
 
 Решение
 ---
+```
+r@ub1:~$ docker run -d --name postgres12 \
+> -e POSTGRES_PASSWORD=a1 \
+> -p 5432:5432 \
+> -v $HOME/docker/volumes/postgres/data:/home/r/netology/6-1_DB/postgresql/data \
+> -v $HOME/docker/volumes/postgres/bckp:/home/r/netology/6-1_DB/postgresql/backup \
+> postgres:12
+f9db3f23c03246bf43cdb480d823102f5bd49d7bd43871c61dcd36017910b547
 
+r@ub1:~$ docker ps
+CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+f9db3f23c032   postgres:12   "docker-entrypoint.s…"   14 seconds ago   Up 12 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   postgres12
+```
 ___
 
 Задача 2
