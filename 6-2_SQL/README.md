@@ -55,7 +55,87 @@ ___
 
 Решение
 ---
+- Итоговый список БД.
 
+```
+postgres=# \l+
+                                                                    List of databases
+   Name    |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   |  Size   | Tablespace |                Description
+-----------+----------+----------+-------------+-------------+-----------------------+---------+------------+--------------------------------------------
+ postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |                       | 8057 kB | pg_default | default administrative connection database
+ template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +| 7809 kB | pg_default | unmodifiable empty database
+           |          |          |             |             | postgres=CTc/postgres |         |            |
+ template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +| 7953 kB | pg_default | default template for new databases
+           |          |          |             |             | postgres=CTc/postgres |         |            |
+ test_db   | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |                       | 7953 kB | pg_default |
+(4 rows)
+```
+- Описание таблиц.
+```
+postgres=# \d+ orders
+                                                           Table "public.orders"
+    Column    |          Type          | Collation | Nullable |              Default               | Storage  | Stats target | Description
+--------------+------------------------+-----------+----------+------------------------------------+----------+--------------+-------------
+ id           | integer                |           | not null | nextval('orders_id_seq'::regclass) | plain    |              |
+ Наименование | character varying(200) |           |          |                                    | extended |              |
+ Цена         | integer                |           |          |                                    | plain    |              |
+Indexes:
+    "orders_pkey" PRIMARY KEY, btree (id)
+Access method: heap
+
+postgres=# \d+ clients
+                                                             Table "public.clients"
+      Column       |          Type          | Collation | Nullable |               Default               | Storage  | Stats target | Description
+-------------------+------------------------+-----------+----------+-------------------------------------+----------+--------------+-------------
+ id                | integer                |           | not null | nextval('clients_id_seq'::regclass) | plain    |              |
+ Наименование      | character varying(200) |           |          |                                     | extended |              |
+ Страна проживания | character varying(200) |           |          |                                     | extended |              |
+ Заказ             | integer                |           |          |                                     | plain    |              |
+Indexes:
+    "clients_pkey" PRIMARY KEY, btree (id)
+    "index_strana" btree ("Страна проживания")
+Access method: heap
+```
+- SQL-запрос для выдачи списка пользователей с правами над таблицами test_db.
+```
+postgres=# SELECT
+grantee, privilege_type, table_name
+FROM
+information_schema.table_privileges
+WHERE
+grantee in ('test-admin-user','test-simple-user')
+and table_name in ('orders','clients')
+order by
+1,2,3;
+```
+- Список пользователей с правами к таблицам базы test_db.
+```
+     grantee      | privilege_type | table_name
+------------------+----------------+------------
+ test-admin-user  | DELETE         | clients
+ test-admin-user  | DELETE         | orders
+ test-admin-user  | INSERT         | clients
+ test-admin-user  | INSERT         | orders
+ test-admin-user  | REFERENCES     | clients
+ test-admin-user  | REFERENCES     | orders
+ test-admin-user  | SELECT         | clients
+ test-admin-user  | SELECT         | orders
+ test-admin-user  | TRIGGER        | clients
+ test-admin-user  | TRIGGER        | orders
+ test-admin-user  | TRUNCATE       | clients
+ test-admin-user  | TRUNCATE       | orders
+ test-admin-user  | UPDATE         | clients
+ test-admin-user  | UPDATE         | orders
+ test-simple-user | DELETE         | clients
+ test-simple-user | DELETE         | orders
+ test-simple-user | INSERT         | clients
+ test-simple-user | INSERT         | orders
+ test-simple-user | SELECT         | clients
+ test-simple-user | SELECT         | orders
+ test-simple-user | UPDATE         | clients
+ test-simple-user | UPDATE         | orders
+(22 rows)
+```
 ___
 Задача 3
 ---
@@ -90,7 +170,47 @@ ___
 
 Решение
 ---
+Для таблицы *orders*.
+```
+postgres=# INSERT INTO orders VALUES (1, 'Шоколад', 10), (2, 'Принтер', 3000), (3, 'Книга', 500), (4, 'Монитор', 7000), (5, 'Гитара', 4000);
+INSERT 0 5
+postgres=# SELECT * FROM orders;
+ id | Наименование | Цена
+----+--------------+------
+  1 | Шоколад      |   10
+  2 | Принтер      | 3000
+  3 | Книга        |  500
+  4 | Монитор      | 7000
+  5 | Гитара       | 4000
+(5 rows)
 
+postgres=# SELECT count(1) FROM orders;
+ count
+-------
+     5
+(1 row)
+```
+Для таблицы *clients*.
+```
+postgres=# INSERT INTO clients VALUES (1, 'Иванов Иван Иванович', 'USA'), (2, 'Петров Петр Петрович', 'Canada'), (3, 'Иоганн Себастьян Бах', 'Japan'), (4, 'Ронни Джеймс Дио', 'Russia'), (5, 'Ritchie Blackmore', 'Russia');
+INSERT 0 5
+postgres=# SELECT * FROM clients;
+ id |     Наименование     | Страна проживания | Заказ
+----+----------------------+-------------------+-------
+  1 | Иванов Иван Иванович | USA               |
+  2 | Петров Петр Петрович | Canada            |
+  3 | Иоганн Себастьян Бах | Japan             |
+  4 | Ронни Джеймс Дио     | Russia            |
+  5 | Ritchie Blackmore    | Russia            |
+(5 rows)
+
+postgres=# SELECT count(1) FROM clients;
+ count
+-------
+     5
+(1 row)
+
+```
 ___
 Задача 4
 ---
