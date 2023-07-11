@@ -228,7 +228,32 @@ ___
 
 Решение
 ---
-
+Перед выполнением данного задания, добавил в таблицу clients пропущенные элементы при выполнении 2-го задания, включая внешнюю ссылку:
+```
+postgres=# ALTER TABLE clients
+postgres-# ADD CONSTRAINT fk_Заказ
+postgres-# FOREIGN KEY(Заказ)
+postgres-# REFERENCES orders(id)
+postgres-# ;
+```
+SQL-запросы для связывания записей.
+postgres=# UPDATE clients SET "Заказ" = (SELECT id FROM orders WHERE "Наименование"='Книга') WHERE "Наименование"='Иванов Иван Иванович';
+UPDATE 1
+postgres=# UPDATE clients SET "Заказ" = (SELECT id FROM orders WHERE "Наименование"='Монитор') WHERE "Наименование"='Петров Петр Петрович';
+UPDATE 1
+postgres=# UPDATE clients SET "Заказ" = (SELECT id FROM orders WHERE "Наименование"='Гитара') WHERE "Наименование"='Иоганн Себастьян Бах';
+UPDATE 1
+```
+SQL-запрос для выдачи совершивших заказ пользователей.
+```
+postgres=# SELECT c.* FROM clients c JOIN orders o ON c.Заказ = o.id;
+ id |     Наименование     | Страна проживания | Заказ
+----+----------------------+-------------------+-------
+  1 | Иванов Иван Иванович | USA               |     3
+  2 | Петров Петр Петрович | Canada            |     4
+  3 | Иоганн Себастьян Бах | Japan             |     5
+(3 rows)
+```
 ___
 Задача 5
 ---
@@ -238,8 +263,18 @@ ___
 
 Решение
 ---
+```
+postgres=# SELECT c.* FROM clients c JOIN orders o ON c.Заказ = o.id;
+ id |     Наименование     | Страна проживания | Заказ
+----+----------------------+-------------------+-------
+  1 | Иванов Иван Иванович | USA               |     3
+  2 | Петров Петр Петрович | Canada            |     4
+  3 | Иоганн Себастьян Бах | Japan             |     5
+(3 rows)
+```
 ___
 Задача 6
+
 ---
 Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. задачу 1).  
 Остановите контейнер с PostgreSQL, но не удаляйте volumes.  
