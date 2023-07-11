@@ -237,6 +237,7 @@ postgres-# REFERENCES orders(id)
 postgres-# ;
 ```
 SQL-запросы для связывания записей.
+```
 postgres=# UPDATE clients SET "Заказ" = (SELECT id FROM orders WHERE "Наименование"='Книга') WHERE "Наименование"='Иванов Иван Иванович';
 UPDATE 1
 postgres=# UPDATE clients SET "Заказ" = (SELECT id FROM orders WHERE "Наименование"='Монитор') WHERE "Наименование"='Петров Петр Петрович';
